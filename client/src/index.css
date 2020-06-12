@@ -24,3 +24,10 @@ a:hover
 {
   text-decoration: none;
 }
+
+a img
+{
+  justify-content: space-between;
+  margin: 10px;
+  height: 30px;
+}

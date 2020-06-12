@@ -49,6 +49,7 @@ class Header extends Component {
         const { classes, isAuthenticated, user } = this.props;
         const { anchorEl } = this.state
         const open = Boolean(anchorEl)
+        
 
         const guestLinks = (
             <div>
@@ -117,14 +118,15 @@ class Header extends Component {
                 </Menu>
             </div>
         )
+        
         return (
             <div className={classes.root}>
-                <AppBar position="fixed" style={{ backgroundColor: '#607d8b' }}>
+                <AppBar position="static" style={{ backgroundColor: '#607d8b' }}>
                     <Toolbar className={classes.space}>
                         <Link to="/" className={classes.logo}>UCOOK</Link>
                         { isAuthenticated ? authLinks : guestLinks }
                     </Toolbar>
-                </AppBar> 
+                </AppBar>
             </div>
         )
     }

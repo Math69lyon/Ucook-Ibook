@@ -11,6 +11,7 @@ import Home from './components/Home'
 import Registration from './components/Auth/Registration'
 import Connection from './components/Auth/Connection'
 
+
 import setAuthHeader from './utils/setAuthHeader'
 import { logoutUser, getCurrentUser } from './actions/authActions'
 

@@ -41,7 +41,7 @@ class Header extends Component {
 
     handleClose = () => { this.setState({ anchorEl: null })}
 
-    handleLogout() {
+    handleLogout () {
         this.setState({ anchorEl: null })
         this.props.logoutUser()
     }
@@ -85,7 +85,7 @@ class Header extends Component {
             </div>
         )
 
-        const authLinks = isAuthenticated && (
+        const authLinks = (
             <div>
                 <IconButton 
                     aria-owns={ open ? 'menu-appbar': undefined }
@@ -110,7 +110,7 @@ class Header extends Component {
                     onClose={this.handleClose}
                 >
                     <MenuItem onClick={this.handleClose}>
-                        <Link to={`/profile/${user._id}`}>Profile</Link>
+                        <Link>Profile</Link>
                     </MenuItem>
                     <MenuItem >
                         <Link to="/#" onClick={this.handleLogout}>Logout</Link>
@@ -118,7 +118,6 @@ class Header extends Component {
                 </Menu>
             </div>
         )
-        
         return (
             <div className={classes.root}>
                 <AppBar position="static" style={{ backgroundColor: '#607d8b' }}>

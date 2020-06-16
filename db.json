@@ -1,0 +1,5 @@
+{"_id":{"$oid":"5edd45683849810a2bd4ede2"},"login":"loulou","email":"loulou@loulou.com","password":"$2a$10$gQLW.BHcZNgB3isRdrdHh.OwIYiPglY6B4GjKqejMY.SKFqhyZn1m","type":false,"__v":0}
+{"_id":{"$oid":"5edd48133849810a2bd4ede3"},"login":"zazar","email":"zaza@zaza.com","password":"$2a$10$gmZJE4QyhKwG3vaP8PNKceKOqgPdK.r5RujYNgp5z5B.Vi9H/Rmhm","__v":0}
+{"_id":{"$oid":"5ede34680dc74b1b55355d12"},"login":"test1","email":"test@test.com","password":"$2a$10$DjspcL51Jr4uiWrMYrdGYuUI5kmQWocPsKxVdwM2nZSU3E0eKhDzW","__v":0}
+{"_id":{"$oid":"5ede373af3b0b21c4aaa5d1c"},"login":"toto1","email":"toto@toto.com","password":"$2a$10$wAeXxhlgZJEy/sS6DBruLOt9m96eRRAsH0FzHeDcBAfzg62pZdtYO","__v":0}
+{"_id":{"$oid":"5ee37123752df5145e9bca5d"},"login":"roro","email":"roro@roro.com","password":"$2a$10$kE1HXifKZzX0fcwgVCXFn.M4Ig8LOwQVzp.H46QY4kCQHDUcmruwm","__v":0}

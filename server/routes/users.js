@@ -90,5 +90,21 @@ router.route('/search')
         .then(user => res.json({ userId: user._id }))
         .catch(err => res.status(404).json({ msg: 'Not found'}))
 })
+router.route('/:userId')
+    .get((req, res) => {
+        User.findById(req.params.id)
+        .then(user => {
+            if (user) {
+                return res.json({
+                    _id: user._id,
+                    login: user.login,
+                    email: user.email
+                })
+            } else {
+                return res.status(404).json({ msg: 'User not found'})
+            }
+        })
+        .catch(err => console.log(err))
+    })
 
 module.exports = router

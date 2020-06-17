@@ -10,11 +10,15 @@ import Main from './components/Layout/Main'
 import Home from './components/Home'
 import Registration from './components/Auth/Registration'
 import Connection from './components/Auth/Connection'
+import Profile from './components/Profile/Profile'
+import NotFound from './components/NotFound'
 
 import setAuthHeader from './utils/setAuthHeader'
 import { logoutUser, getCurrentUser } from './actions/authActions'
 
 import "./App.css";
+
+
 
 
 if (localStorage.getItem('jwtToken')) {
@@ -41,6 +45,8 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/connection" component={Connection} />
                 <Route path="/registration" component={Registration} />
+                <Route path="/profile/:userId" component={Profile} />
+                <Route component={NotFound }/>
               </Switch>
             </Main>
           </BrowserRouter>

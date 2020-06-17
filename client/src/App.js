@@ -14,6 +14,11 @@ import Connection from './components/Auth/Connection'
 import setAuthHeader from './utils/setAuthHeader'
 import { logoutUser, getCurrentUser } from './actions/authActions'
 
+import "./App.css";
+import Api from './components/Layout/Api'
+
+
+
 if (localStorage.getItem('jwtToken')) {
   const currentTime = Date.now() / 1000
   const decode = jwt_decode(localStorage.getItem('jwtToken'))
@@ -38,6 +43,8 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/connection" component={Connection} />
                 <Route path="/registration" component={Registration} />
+                <Route path="/api" component={Api} />
+
               </Switch>
             </Main>
           </BrowserRouter>

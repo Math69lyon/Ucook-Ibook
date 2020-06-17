@@ -79,6 +79,24 @@ router.route('/')
         })
 })
 
+router.route('/Home')
+    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+        res.json({
+            _id: req.user._id,
+            login: req.user.login,
+            email: req.user.email
+        })
+})
+
+router.route('/Api')
+    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+        res.json({
+            _id: req.user._id,
+            login: req.user.login,
+            email: req.user.email
+        })
+})
+
 router.route('/search')
     .post((req, res) => {
         User.findOne({

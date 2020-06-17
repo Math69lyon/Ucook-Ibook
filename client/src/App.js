@@ -9,11 +9,15 @@ import Main from './components/Layout/Main'
 
 import Home from './components/Home'
 import Registration from './components/Auth/Registration'
+<<<<<<< HEAD
 import Registration from './components/Auth/CookerRegistration'
+=======
+>>>>>>> fa16a86f9a6b3dce012ac6e96ecae19173b7ddbf
 import Connection from './components/Auth/Connection'
 
 import setAuthHeader from './utils/setAuthHeader'
 import { logoutUser, getCurrentUser } from './actions/authActions'
+<<<<<<< HEAD
 import { logoutCooker, getCurrentCooker } from './actions/authActions'
 
 if (localStorage.getItem('jwtToken')) {
@@ -65,3 +69,43 @@ class App extends Component {
 }
 
 export default App;
+=======
+
+import "./App.css";
+
+
+if (localStorage.getItem('jwtToken')) {
+  const currentTime = Date.now() / 1000
+  const decode = jwt_decode(localStorage.getItem('jwtToken'))
+
+  if (currentTime > decode.exp) {
+    store.dispatch(logoutUser())
+    window.location.href = '/'
+  } else {
+    setAuthHeader(localStorage.getItem('jwtToken'))
+    store.dispatch(getCurrentUser())
+  }
+}
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <div>
+          <BrowserRouter>
+            <Main>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/connection" component={Connection} />
+                <Route path="/registration" component={Registration} />
+              </Switch>
+            </Main>
+          </BrowserRouter>
+        </div>
+      </Provider>
+    );
+  }
+}
+
+export default App;
+>>>>>>> fa16a86f9a6b3dce012ac6e96ecae19173b7ddbf

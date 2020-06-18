@@ -62,7 +62,7 @@ class Registration extends Component
         const { classes } = this.props;
         const { errors } = this.state;
         return (
-            <Paper style={{ padding: 8 }}>
+            <Paper style={{ padding: 8, marginTop: '60px' }}>
                 <form onSubmit={this.handleSubmit}>
                     <TextField
                         variant="outlined"

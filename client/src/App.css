@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 
 body {
 
 }
 
+=======
+<<<<<<< HEAD
+>>>>>>> 7e91b115fc548991abc87937d716619b84e59eb6
 .App {
   min-height: 100vh;
 }
@@ -14,6 +18,28 @@ body {
   padding: 10px;
 }
 
+<<<<<<< HEAD
+=======
+=======
+
+body {
+  background-color: #282c34;
+  padding: 40px;
+  font-family: Arial;
+}
+
+.App {
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+.search-bar{
+  width: 50%;
+  border: none;
+  padding: 10px;
+}
+
+>>>>>>> 7e91b115fc548991abc87937d716619b84e59eb6
 .search-form{
   min-height: 10vh;
   display: flex;
@@ -22,8 +48,11 @@ body {
 }
 
 .search-button{
+<<<<<<< HEAD
   margin-top: 40px;
 
+=======
+>>>>>>> 7e91b115fc548991abc87937d716619b84e59eb6
   background: rgba(2, 104, 122, 0.527);
   border: none;
   padding: 10px 20px;
@@ -42,6 +71,10 @@ body {
 }
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> fa16a86f9a6b3dce012ac6e96ecae19173b7ddbf
+>>>>>>> 7e91b115fc548991abc87937d716619b84e59eb6
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import { Spring } from 'react-spring/renderprops'; 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 export class Component2 extends Component {
   render() {
@@ -7,7 +13,7 @@ export class Component2 extends Component {
       <Spring
         from={{ opacity: 0 }}
         to={{ opacity: 1 }}
-        config={{ delay: 1000, duration: 1000 }}
+        config={{ delay: 800, duration: 1000 }}
       >
         {props => (
           <div style={props}>
@@ -18,7 +24,15 @@ export class Component2 extends Component {
                 Possimus nobis adipisci eum minima deserunt at porro, veritatis
                 officia commodi itaque voluptates vel suscipit assumenda soluta
                 ipsa voluptatibus laudantium labore harum?
-              </p>
+               
+                <button style={btn} onClick={this.props.toggle}>
+                <li>
+                <Link to="/">Api Recipes User</Link>
+                </li>
+             
+                </button>              
+                </p>
+              
             </div>
           </div>
         )}

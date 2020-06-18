@@ -7,18 +7,18 @@ import {
   Link
 } from "react-router-dom";
 
-export class Component1 extends Component {
+export class Component4 extends Component {
   render() {
     return (
       <Spring
         from={{ opacity: 0 }}
         to={{ opacity: 1 }}
-        config={{ delay: 800, duration: 1000 }}
+        config={{ delay: 3000, duration: 1000 }}
       >
         {props => (
           <div style={props}>
-            <div style={c1Style}>
-              <h1>Component 1</h1>
+            <div style={c4Style}>
+              <h1>Component 4</h1>
               <p>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Possimus nobis adipisci eum minima deserunt at porro, veritatis
@@ -27,11 +27,10 @@ export class Component1 extends Component {
                
                 <button style={btn} onClick={this.props.toggle}>
                 <li>
-                <Link to="/">Api Recipes User</Link>
-                </li>
-             
-                </button>              
-                </p>
+                <Link to="/">About us</Link>
+              </li>   
+              </button>              
+              </p>
               
             </div>
           </div>
@@ -41,10 +40,10 @@ export class Component1 extends Component {
   }
 }
 
-const c1Style = {
-  background: "steelblue",
+const c4Style = {
+  background: "darkblue",
   color: "white",
-  padding: "1.5rem"
+  padding: "1.5rem 1.5rem 5rem 1.5rem"
 };
 
 const btn = {
@@ -56,17 +55,4 @@ const btn = {
   margin: "15px 0"
 };
 
-export default Component1;
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default Component4;

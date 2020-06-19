@@ -130,7 +130,7 @@ class Header extends Component {
         
         return (
             <div className={classes.root}>
-                <AppBar position="fixed" style={{ backgroundColor: '#607d8b' }}>
+                <AppBar position="fixed" style={{ backgroundColor: '#d1af76' }}>
                     <Toolbar className={classes.space}>
                         <Link to="/" className={classes.logo}>UCOOK</Link>
                         { isAuthenticated ? authLinks : guestLinks }

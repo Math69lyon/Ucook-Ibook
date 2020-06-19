@@ -5,7 +5,7 @@ const styles = {
     root: {
         textAlign: 'center',
         margin: 20,
-        backgroundColor: '#607d8b'  
+        backgroundColor: '#d1af76'  
     }
 }
 

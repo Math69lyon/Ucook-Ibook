@@ -1,6 +1,6 @@
 const Validator = require('validator')
 
-module.exports = function (data) {
+module.exports = function(data) {
     let errors = {}
 
     //Login validator:
@@ -14,7 +14,7 @@ module.exports = function (data) {
     }
 
     //Password validator:
-    if (!Validator.isLength(data.password, { min: 4, max: 20}))
+    if (!Validator.isLength(data.password, { min: 4, max: 20 }))
     {
         errors.password = 'Password must between 4 and 20 characters'
     }

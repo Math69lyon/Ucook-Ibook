@@ -8,7 +8,7 @@ import SaveIcon from '@material-ui/icons/Save'
 import { connect } from 'react-redux'
 
 
-import { registrationCooker } from '../../actions/authCookerActions'
+import { registrationCooker } from '../../actions/authcookerActions'
 
 const styles = {
     textField: {
@@ -64,85 +64,75 @@ class RegistrationCooker extends Component {
     render() {
         const { classes } = this.props;
         const { errors } = this.state;
-        return ( <
-            Paper style = {
-                { padding: 8 }
-            } >
-            <
-            form onSubmit = { this.handleSubmit } >
-            <
-            TextField variant = "outlined"
-            type = "login"
-            label = "Login"
-            className = { classes.textField }
-            value = { this.state.login }
-            name = "login"
-            onChange = { this.handleChange }
-            helperText = { errors.login ? errors.login : '' }
-            error = { errors.login ? true : false }
-            placeholder = "EX: koko" / >
+        return (
+            <Paper style={{ padding: 8, marginTop: '30px' }}>
+                <form onSubmit={ this.handleSubmit }>
+                    <TextField
+                        variant="outlined"
+                        type="login"
+                        label="Login"
+                        className={ classes.textField }
+                        value={ this.state.login }
+                        name="login"
+                        onChange={ this.handleChange }
+                        helperText={ errors.login ? errors.login : '' }
+                        error={ errors.login ? true : false }
+                        placeholder="EX: koko" />
 
-            <
-            TextField variant = "outlined"
-            type = "email"
-            label = "Email"
-            className = { classes.textField }
-            value = { this.state.email }
-            name = "email"
-            onChange = { this.handleChange }
-            helperText = { errors.email ? errors.email : '' }
-            error = { errors.email ? true : false }
-            placeholder = "Ex: koko@koko.com" / >
+                    <TextField
+                        variant="outlined"
+                        type="email"
+                        label="Email"
+                        className={ classes.textField }
+                        value={ this.state.email }
+                        name="email"
+                        onChange={ this.handleChange }
+                        helperText={ errors.email ? errors.email : '' }
+                        error={ errors.email ? true : false }
+                        placeholder="Ex: koko@koko.com" />
 
-            <
-            TextField variant = "outlined"
-            type = "password"
-            label = "Password"
-            className = { classes.textField }
-            value = { this.state.password }
-            name = "password"
-            onChange = { this.handleChange }
-            helperText = { errors.password ? errors.password : '' }
-            error = { errors.password ? true : false }
-            placeholder = "Tape your password" / >
 
-            <
-            TextField variant = "outlined"
-            type = "password"
-            label = "Password confirm"
-            className = { classes.textField }
-            value = { this.state.password_confirm }
-            name = "password_confirm"
-            onChange = { this.handleChange }
-            helperText = { errors.password_confirm ? errors.password_confirm : '' }
-            error = { errors.password_confirm ? true : false }
-            placeholder = "Confirm your password" / >
+                    <TextField
+                        variant="outlined"
+                        type="password"
+                        label="Password"
+                        className={ classes.textField }
+                        value={ this.state.password }
+                        name="password"
+                        onChange={ this.handleChange }
+                        helperText={ errors.password ? errors.password : '' }
+                        error={ errors.password ? true : false }
+                        placeholder="Tape your password" />
 
-            <
-            TextField variant = "outlined"
-            type = "city"
-            label = "City"
-            className = { classes.textField }
-            value = { this.state.city }
-            name = "city"
-            onChange = { this.handleChange }
-            helperText = { errors.city ? errors.city : '' }
-            error = { errors.email ? true : false }
-            placeholder = "Ex: Lyon" / >
+                    <TextField
+                        variant="outlined"
+                        type="password"
+                        label="Password confirm"
+                        className={ classes.textField }
+                        value={ this.state.password_confirm }
+                        name="password_confirm"
+                        onChange={ this.handleChange }
+                        helperText={ errors.password_confirm ? errors.password_confirm : '' }
+                        error={ errors.password_confirm ? true : false }
+                        placeholder="Confirm your password" />
 
-            <
-            div className = { classes.btnBlock } >
-            <
-            Button variant = "contained"
-            style = {
-                { backgroundColor: '#ffab91' } }
-            type = "submit"
-            className = { classes.button }
-            startIcon = { < SaveIcon / > }
-            value = "Submit" > Submit < /Button> < /
-            div > <
-            /form> < /
-            Paper >
+                    <TextField
+                        variant="outlined"
+                        type="city"
+                        label="City"
+                        className={ classes.textField }
+                        value={ this.state.city }
+                        name="city"
+                        onChange={ this.handleChange }
+                        helperText={ errors.city ? errors.city : '' }
+                        error={ errors.email ? true : false }
+                        placeholder="Ex: Lyon" />
+
+                    <div className={ classes.btnBlock }>
+                    <Button variant="contained" style={{ backgroundColor: '#ffab91' }} type="submit" className={ classes.button } startIcon={ < SaveIcon /> } value="Submit">Submit</Button>
+                    </div>
+                </form>
+            </Paper>
         )
     }
 }

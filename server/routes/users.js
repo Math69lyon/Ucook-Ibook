@@ -72,12 +72,15 @@ router.route('/connection')
 
 router.route('/')
     .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+        console.log('herve')
         res.json({
             _id: req.user._id,
             login: req.user.login,
             email: req.user.email
         })
 })
+
+
 
 router.route('/Home')
     .get( passport.authenticate('jwt', { session: false }),(req, res) => {
@@ -89,6 +92,15 @@ router.route('/Home')
 })
 
 router.route('/Api')
+    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+        res.json({
+            _id: req.user._id,
+            login: req.user.login,
+            email: req.user.email
+        })
+})
+
+router.route('/about')
     .get( passport.authenticate('jwt', { session: false }),(req, res) => {
         res.json({
             _id: req.user._id,

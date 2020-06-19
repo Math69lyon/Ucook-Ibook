@@ -4,8 +4,8 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 
-const validRegistrationInput = require('../validation/registration');
-const validConnectionInput = require('../validation/connection');
+const validRegistrationInput = require('../validation/cookerregistration');
+const validConnectionInput = require('../validation/cookerconnection');
 
 router.route('/cookerregistration')
     .post((req, res) => {
@@ -39,7 +39,7 @@ router.route('/cookerregistration')
             })
     })
 
-router.route('/connection')
+router.route('/cookerconnection')
     .post((req, res) => {
         const { errors, isValid } = validConnectionInput(req.body)
 
@@ -69,15 +69,6 @@ router.route('/connection')
                     return res.status(404).json(errors)
                 }
             })
-    })
-
-router.route('/')
-    .get(passport.authenticate('jwt', { session: false }), (req, res) => {
-        res.json({
-            _id: req.cooker._id,
-            login: req.cooker.login,
-            email: req.cooker.email
-        })
     })
 
 router.route('/search')

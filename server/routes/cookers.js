@@ -1,21 +1,21 @@
 const router = require('express').Router()
-const User = require('../models/Cooker')
+const Cooker = require('../models/Cooker')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 
-const validRegistrationInput = require('../validation/cookerregistration');
-const validConnectionInput = require('../validation/cookerconnection');
+const validCookerRegistrationInput = require('../validation/cookerregistration');
+const validCookerConnectionInput = require('../validation/cookerconnection');
 
 router.route('/cookerregistration')
     .post((req, res) => {
-        const { isValid, errors } = validRegistrationInput(req.body)
+        const { isValid, errors } = validCookerRegistrationInput(req.body)
 
         if (!isValid) {
             return res.status(404).json(errors)
         }
 
-        User.findOne({ email: req.body.email })
+        Cooker.findOne({ email: req.body.email })
             .then(cooker => {
                 if (cooker) {
                     errors.email = 'This email is already exist'
@@ -31,7 +31,7 @@ router.route('/cookerregistration')
                             city: req.body.city
                         })
 
-                        newUser.save()
+                        newCooker.save()
                             .then(newCooker => res.json(newCooker))
                             .catch(err => console.log(err))
                     })
@@ -41,13 +41,13 @@ router.route('/cookerregistration')
 
 router.route('/cookerconnection')
     .post((req, res) => {
-        const { errors, isValid } = validConnectionInput(req.body)
+        const { errors, isValid } = validCookerConnectionInput(req.body)
 
         if (!isValid) {
             return res.status(404).json(errors)
         }
 
-        User.findOne({ login: req.body.login })
+        Cooker.findOne({ login: req.body.login })
             .then(cooker => {
                 if (cooker) {
                     bcrypt.compare(req.body.password, cooker.password)
@@ -70,6 +70,34 @@ router.route('/cookerconnection')
                 }
             })
     })
+
+router.route('/')
+    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+        console.log('herve')
+        res.json({
+            _id: req.cooker._id,
+            login: req.cooker.login,
+            email: req.cooker.email
+        })
+})
+
+router.route('/Api')
+    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+        res.json({
+            _id: req.user._id,
+            login: req.user.login,
+            email: req.user.email
+        })
+})
+
+router.route('/about')
+    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+        res.json({
+            _id: req.user._id,
+            login: req.user.login,
+            email: req.user.email
+        })
+})
 
 router.route('/search')
     .post((req, res) => {

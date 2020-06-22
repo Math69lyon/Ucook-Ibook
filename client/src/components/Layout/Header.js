@@ -46,7 +46,7 @@ class Header extends Component {
     }
        
     render () {
-        const { classes, isAuthenticated, user, cooker } = this.props;
+        const { classes, isAuthenticated, isAuthenticated2, user, cooker } = this.props;
         const { anchorEl } = this.state
         const open = Boolean(anchorEl)
         
@@ -91,7 +91,7 @@ class Header extends Component {
             </div>
         )
 
-        //Onglet quand on est connecté :
+        //Onglet quand user est connecté :
         const authLinks = isAuthenticated && (
             <div>
                 <IconButton 
@@ -122,9 +122,6 @@ class Header extends Component {
                     <MenuItem onClick={this.handleClose}>
                         <Link to={`/profile/${user._id}`}>Profile</Link>
                     </MenuItem>
-                    <MenuItem onClick={ this.handleClose }>
-                    <Link to={`/profile/${cooker._id}`}>Cooker Profile</Link>
-                    </MenuItem>
                     <MenuItem >
                         <Link to="/#" onClick={this.handleLogout}>Logout</Link>
                     </MenuItem>
@@ -138,16 +135,60 @@ class Header extends Component {
             </div>
         )
         
-        //Barre du site
-        return (
-            <div className={classes.root}>
-                <AppBar position="fixed" style={{ backgroundColor: '#607d8b' }}>
-                    <Toolbar className={classes.space}>
-                        <Link to="/" className={classes.logo}>UCOOK</Link>
-                        { isAuthenticated ? authLinks : guestLinks }
-                    </Toolbar>
-                </AppBar>
+        //Onglet quand cooker est connecté :
+        const authLinks2 = isAuthenticated2 && (
+            <div>
+                <IconButton 
+                    aria-owns={ open ? 'menu-appbar': undefined }
+                    aria-haspopup="true"
+                    color="inherit"
+                    onClick={this.handleMenu}
+                >
+                    <AccountCircle />
+                </IconButton>
+                <Menu
+                    id="menu-appbar"
+                    open={open}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right'
+                    }}
+                    transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right'
+                    }}
+                    anchorEl={anchorEl}
+                    onClose={this.handleClose}
+                >
+                    <MenuItem onClick={this.handleClose}>
+                        <Link to="/">Home</Link>
+                    </MenuItem>
+                    <MenuItem onClick={ this.handleClose }>
+                        <Link to={`/profile/${cooker._id}`}>Profile</Link>
+                    </MenuItem>
+                    <MenuItem >
+                        <Link to="/#" onClick={this.handleLogout}>Logout</Link>
+                    </MenuItem>
+                    <MenuItem onClick={this.handleClose}>
+                        <Link to="/Api">Api Ademam recipes</Link>
+                    </MenuItem>
+                    <MenuItem onClick={this.handleClose}>
+                        <Link to="/about">About Us</Link>
+                    </MenuItem>
+                </Menu>
+                
             </div>
+        )
+            //Barre du site :
+            return (
+                <div className={classes.root}>
+                    <AppBar position="fixed" style={{ backgroundColor: '#607d8b' }}>
+                        <Toolbar className={classes.space}>
+                            <Link to="/" className={classes.logo}>UCOOK</Link>
+                            { isAuthenticated ? authLinks : guestLinks }
+                        </Toolbar>
+                    </AppBar>
+                </div>  
         )
     }
 }
@@ -155,7 +196,8 @@ class Header extends Component {
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
     user: state.auth.user,
-    cooker: state.auth.cooker
+    isAuthenticated2: state.auth2.isAuthenticated2,
+    cooker: state.auth2.cooker
 
 })
 

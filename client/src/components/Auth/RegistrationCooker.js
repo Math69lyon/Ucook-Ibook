@@ -22,8 +22,10 @@ const styles = {
     }
 }
 
-class RegistrationCooker extends Component {
-    constructor(props) {
+class RegistrationCooker extends Component
+{
+    constructor(props)
+    {
         super(props)
         this.state = {
             login: '',
@@ -37,10 +39,8 @@ class RegistrationCooker extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+    handleChange (e) {
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     componentWillReceiveProps(nextProps) {
@@ -49,7 +49,7 @@ class RegistrationCooker extends Component {
         }
     }
 
-    handleSubmit(e) {
+    handleSubmit (e) {
         e.preventDefault()
         const userData = {
             login: this.state.login,
@@ -66,29 +66,29 @@ class RegistrationCooker extends Component {
         const { errors } = this.state;
         return (
             <Paper style={{ padding: 8, marginTop: '30px' }}>
-                <form onSubmit={ this.handleSubmit }>
+                <form onSubmit={this.handleSubmit}>
                     <TextField
                         variant="outlined"
                         type="login"
                         label="Login"
-                        className={ classes.textField }
-                        value={ this.state.login }
+                        className={classes.textField}
+                        value={this.state.login}
                         name="login"
-                        onChange={ this.handleChange }
-                        helperText={ errors.login ? errors.login : '' }
-                        error={ errors.login ? true : false }
+                        onChange={this.handleChange}
+                        helperText={errors.login ? errors.login : ''}
+                        error={errors.login ? true : false}
                         placeholder="EX: koko" />
 
                     <TextField
                         variant="outlined"
                         type="email"
                         label="Email"
-                        className={ classes.textField }
-                        value={ this.state.email }
+                        className={classes.textField}
+                        value={this.state.email}
                         name="email"
-                        onChange={ this.handleChange }
-                        helperText={ errors.email ? errors.email : '' }
-                        error={ errors.email ? true : false }
+                        onChange={this.handleChange}
+                        helperText={errors.email ? errors.email : ''}
+                        error={errors.email ? true : false}
                         placeholder="Ex: koko@koko.com" />
 
 
@@ -96,40 +96,40 @@ class RegistrationCooker extends Component {
                         variant="outlined"
                         type="password"
                         label="Password"
-                        className={ classes.textField }
-                        value={ this.state.password }
+                        className={classes.textField}
+                        value={this.state.password}
                         name="password"
-                        onChange={ this.handleChange }
-                        helperText={ errors.password ? errors.password : '' }
-                        error={ errors.password ? true : false }
+                        onChange={this.handleChange}
+                        helperText={errors.password ? errors.password : ''}
+                        error={errors.password ? true : false}
                         placeholder="Tape your password" />
 
                     <TextField
                         variant="outlined"
                         type="password"
                         label="Password confirm"
-                        className={ classes.textField }
-                        value={ this.state.password_confirm }
+                        className={classes.textField}
+                        value={this.state.password_confirm}
                         name="password_confirm"
-                        onChange={ this.handleChange }
-                        helperText={ errors.password_confirm ? errors.password_confirm : '' }
-                        error={ errors.password_confirm ? true : false }
+                        onChange={this.handleChange}
+                        helperText={errors.password_confirm ? errors.password_confirm : ''}
+                        error={errors.password_confirm ? true : false}
                         placeholder="Confirm your password" />
 
                     <TextField
                         variant="outlined"
                         type="city"
                         label="City"
-                        className={ classes.textField }
-                        value={ this.state.city }
+                        className={classes.textField}
+                        value={this.state.city}
                         name="city"
-                        onChange={ this.handleChange }
-                        helperText={ errors.city ? errors.city : '' }
-                        error={ errors.email ? true : false }
+                        onChange={this.handleChange }
+                        helperText={errors.city ? errors.city : ''}
+                        error={errors.email ? true : false}
                         placeholder="Ex: Lyon" />
 
-                    <div className={ classes.btnBlock }>
-                    <Button variant="contained" style={{ backgroundColor: '#ffab91' }} type="submit" className={ classes.button } startIcon={ < SaveIcon /> } value="Submit">Submit</Button>
+                    <div className={classes.btnBlock}>
+                    <Button variant="contained" style={{ backgroundColor: '#ffab91' }} type="submit" className={classes.button} startIcon={< SaveIcon />} value="Submit">OK</Button>
                     </div>
                 </form>
             </Paper>

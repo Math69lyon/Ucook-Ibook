@@ -6,5 +6,5 @@ import authCookerReducer from './authCookerReducer'
 export default combineReducers({
     errors: errorReducer,
     auth: authReducer,
-    auth: authCookerReducer
+    auth2: authCookerReducer
 })

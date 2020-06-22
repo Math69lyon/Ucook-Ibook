@@ -6,9 +6,12 @@ const cors = require('cors')
 const passport = require('passport')
 
 const users = require('./routes/users')
+const cookers = require('./routes/cookers')
 
+//setup environment
 dotenv.config()
 
+//mongo db connect
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true })
 
 const app = express()
@@ -21,6 +24,8 @@ app.use(passport.initialize())
 require('./config/passport')(passport)
 
 app.use('/api/users', users)
+app.use('/api/cookers', cookers)
 
-const PORT = process.env.PORT || 3000
+//run App port
+const PORT = process.env.PORT || 5000
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))

@@ -20,8 +20,7 @@ const styles = {
     }
 }
 
-class Connection extends Component
-{
+class Connection extends Component {
     constructor (props) {
         super(props)
         this.state = {
@@ -32,13 +31,11 @@ class Connection extends Component
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)   
     }
-
     componentDidMount () {
         if(this.props.auth.isAuthenticated) {
             this.props.history.push('/')
         }
     }
-
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({ errors: nextProps.errors })
@@ -48,11 +45,9 @@ class Connection extends Component
             this.props.history.push('/')
         }
     }
-
     handleChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
-
     handleSubmit (e) {
         e.preventDefault()
         const userData = {
@@ -62,12 +57,11 @@ class Connection extends Component
 
         this.props.connectionUser(userData)
     }
-
     render () {
         const { classes } = this.props;
         const { errors } = this.state
         return (
-            <Paper style={{ padding: 8, marginTop: '60px' }}>
+            <Paper style={{ padding: 8 }}>
                 <form onSubmit={this.handleSubmit}>
                     <TextField 
                         variant="outlined"
@@ -94,7 +88,7 @@ class Connection extends Component
                         placeholder="Tape your password" />
 
                     <div className={classes.btnBlock}>
-                    <Button variant="contained" style={{ backgroundColor: '#ffab91' }} type="submit" className={classes.button} startIcon={<SaveIcon/>} value="Submit">Connection</Button>
+                    <Button variant="contained" style={{ backgroundColor: '#ffab91' }} type="submit" className={classes.button} startIcon={<SaveIcon />} value="Submit">Connection</Button>
                     </div>
                 </form>
             </Paper>

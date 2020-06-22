@@ -80,16 +80,22 @@ router.route('/')
         })
 })
 
-
-
-router.route('/Home')
-    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
-        res.json({
-            _id: req.user._id,
-            login: req.user.login,
-            email: req.user.email
+router.route('/:id')
+    .get((req, res) => {
+        User.findById(req.params.id)
+        .then(user => {
+            if (user) {
+                return res.json({
+                    _id: user._id,
+                    login: user.login,
+                    email: user.email
+                })
+            } else {
+                return res.status(404).json({ msg: 'User not found'})
+            }
         })
-})
+        .catch(err => console.log(err))
+    })
 
 router.route('/Api')
     .get( passport.authenticate('jwt', { session: false }),(req, res) => {

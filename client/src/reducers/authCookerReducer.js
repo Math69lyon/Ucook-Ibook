@@ -3,7 +3,7 @@ import {
 } from '../constants'
 
 const initialState = {
-    isAuthenticated: false,
+    isAuthenticated2: false,
     cooker: null
 }
 
@@ -12,7 +12,7 @@ export default function(state = initialState, action) {
         case SET_CURRENT_COOKER:
             return {
                 ...state,
-                isAuthenticated: Object.keys(action.payload).length !== 0,
+                isAuthenticated2: Object.keys(action.payload).length !== 0,
                 cooker: action.payload
             }
         default:

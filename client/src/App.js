@@ -23,32 +23,44 @@ import { logoutUser, getCurrentUser } from './actions/authActions'
 import { logoutCooker, getCurrentCooker } from './actions/authcookerActions'
 
 if (localStorage.getItem('jwtToken')) {
-    const currentTime = Date.now() / 1000
-    const decode = jwt_decode(localStorage.getItem('jwtToken'))
+    const currentTime=Date.now() / 1000
+    const decode=jwt_decode(localStorage.getItem('jwtToken'))
 
     if (currentTime > decode.exp) {
-        store.dispatch(logoutUser(), logoutCooker())
-        window.location.href = '/'
+        store.dispatch(logoutUser())
+        window.location.href='/'
     } else {
         setAuthHeader(localStorage.getItem('jwtToken'))
-        store.dispatch(getCurrentUser(), getCurrentCooker())
+        store.dispatch(getCurrentUser())
+    }
+}
 
+if (localStorage.getItem('jwtToken')) {
+    const currentTime=Date.now() / 1000
+    const decode=jwt_decode(localStorage.getItem('jwtToken'))
+
+    if (currentTime > decode.exp) {
+        store.dispatch(logoutCooker())
+        window.location.href='/'
+    } else {
+        setAuthHeader(localStorage.getItem('jwtToken'))
+        store.dispatch(getCurrentCooker())
     }
 }
 
 class App extends Component {
     render() {
         return (
-            <Provider store={ store }>
-                <div >
-                    <BrowserRouter >
-                        <Main >
-                            <Switch >
-                                <Route exact path="/" component={ Home }/>
-                                <Route path="/connection" component={ Connection }/>
-                                <Route path="/registration" component={ Registration }/>
-                                <Route path="/cookerregistration" component={ RegistrationCooker }/>
-                                <Route path="/cookerconnection" component={ ConnectionCooker }/>
+            <Provider store={store}>
+                <div>
+                    <BrowserRouter>
+                        <Main>
+                            <Switch>
+                                <Route exact path="/" component={ Home } />
+                                <Route path="/connection" component={ Connection } />
+                                <Route path="/registration" component={ Registration } />
+                                <Route path="/cookerregistration" component={ RegistrationCooker } />
+                                <Route path="/cookerconnection" component={ ConnectionCooker } />
                                 <Route path="/profile/:userId" component={Profile} />
                                 <Route path="/profile/:cookerId" component={Cooker} />
                                 <Route path="/about" component={About} />

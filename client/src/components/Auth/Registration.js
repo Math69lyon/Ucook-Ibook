@@ -113,7 +113,7 @@ class Registration extends Component
                         placeholder="Confirm your password" />
 
                     <div className={classes.btnBlock}>
-                    <Button variant="contained" style={{ backgroundColor: '#ffab91' }} type="submit" className={classes.button} startIcon={<SaveIcon />} value="Submit">Submit</Button>
+                    <Button variant="contained" style={{ backgroundColor: '#ffab91' }} type="submit" className={classes.button} startIcon={<SaveIcon />} value="Submit">OK</Button>
                     </div>
                 </form>
             </Paper>

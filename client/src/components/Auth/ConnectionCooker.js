@@ -20,7 +20,8 @@ const styles = {
     }
 }
 
-class ConnectionCooker extends Component {
+class ConnectionCooker extends Component
+{
     constructor(props) {
         super(props)
         this.state = {
@@ -33,7 +34,7 @@ class ConnectionCooker extends Component {
     }
 
     componentDidMount () {
-        if(this.props.auth.isAuthenticated) {
+        if(this.props.auth2.isAuthenticated2) {
             this.props.history.push('/')
         }
     }
@@ -43,7 +44,7 @@ class ConnectionCooker extends Component {
             this.setState({ errors: nextProps.errors })
         }
 
-        if (nextProps.auth.isAuthenticated) {
+        if (nextProps.auth2.isAuthenticated2) {
             this.props.history.push('/')
         }
     }
@@ -54,11 +55,11 @@ class ConnectionCooker extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        const userData = {
+        const cookerData = {
             login: this.state.login,
             password: this.state.password,
         }
-        this.props.connectionCooker(userData)
+        this.props.connectionCooker(cookerData)
     }
 
     render() {
@@ -66,33 +67,33 @@ class ConnectionCooker extends Component {
         const { errors } = this.state
         return (
             <Paper style={{ padding: 8, marginTop: '60px' }}>
-                <form onSubmit={ this.handleSubmit }>
+                <form onSubmit={this.handleSubmit}>
                     <TextField
                         variant="outlined"
                         type="login"
                         label="Login"
-                        className={ classes.textField }
-                        value={ this.state.login }
+                        className={classes.textField}
+                        value={this.state.login}
                         name="login"
-                        onChange={ this.handleChange }
-                        helperText={ errors.login ? errors.login : '' }
-                        error={ errors.login ? true : false }
-                        placeholder="EX: koko" />
+                        onChange={this.handleChange}
+                        helperText={errors.login ? errors.login : ''}
+                        error={errors.login ? true : false}
+                        placeholder="EX: koko"/>
 
                     <TextField
                         variant="outlined"
                         type="password"
                         label="Password"
-                        className={ classes.textField }
-                        value={ this.state.password }
+                        className={classes.textField}
+                        value={this.state.password}
                         name="password"
-                        onChange={ this.handleChange }
-                        helperText={ errors.password ? errors.password : '' }
-                        error={ errors.password ? true : false }
-                        placeholder="Tape your password" />
+                        onChange={this.handleChange}
+                        helperText={errors.password ? errors.password : ''}
+                        error={errors.password ? true : false}
+                        placeholder="Tape your password"/>
 
-                    <div className={ classes.btnBlock }>
-                    <Button variant="contained" style={{ backgroundColor: '#ffab91' }} type="submit" className={ classes.button } startIcon={ < SaveIcon /> } value="Submit">Submit</Button>
+                    <div className={classes.btnBlock}>
+                    <Button variant="contained" style={{ backgroundColor: '#ffab91' }} type="submit" className={classes.button} startIcon={<SaveIcon/>} value="Submit">Connection</Button>
                     </div>
                 </form>
             </Paper>
@@ -101,7 +102,7 @@ class ConnectionCooker extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    auth: state.auth,
+    auth2: state.auth2,
     errors: state.errors
 })
 

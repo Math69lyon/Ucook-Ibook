@@ -15,19 +15,16 @@ export class Component4 extends Component {
         to={{ opacity: 1 }}
         config={{ delay: 3000, duration: 1000 }}
       >
+        
         {props => (
           <div style={props}>
             <div style={c4Style}>
-              <h1>Component 4</h1>
+              <h1>About us</h1>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Possimus nobis adipisci eum minima deserunt at porro, veritatis
-                officia commodi itaque voluptates vel suscipit assumenda soluta
-                ipsa voluptatibus laudantium labore harum?
-               
+                if you want to know more about the dream team!
                 <button style={btn} onClick={this.props.toggle}>
                 <li>
-                <Link to="/">About us</Link>
+                <Link to="/about">About us</Link>
               </li>   
               </button>              
               </p>

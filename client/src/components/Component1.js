@@ -18,16 +18,12 @@ export class Component1 extends Component {
         {props => (
           <div style={props}>
             <div style={c1Style}>
-              <h1>Component 1</h1>
+              <h1>Here are the recipes</h1>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Possimus nobis adipisci eum minima deserunt at porro, veritatis
-                officia commodi itaque voluptates vel suscipit assumenda soluta
-                ipsa voluptatibus laudantium labore harum?
                
                 <button style={btn} onClick={this.props.toggle}>
                 <li>
-                <Link to="/">Api Recipes User</Link>
+                <Link to="/Api">let's find a recipe</Link>
                 </li>
              
                 </button>              

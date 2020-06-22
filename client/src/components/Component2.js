@@ -18,21 +18,26 @@ export class Component2 extends Component {
         {props => (
           <div style={props}>
             <div style={c2Style}>
-              <h1>Component 2</h1>
+              <h1>Registration for users and cookers</h1>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Possimus nobis adipisci eum minima deserunt at porro, veritatis
-                officia commodi itaque voluptates vel suscipit assumenda soluta
-                ipsa voluptatibus laudantium labore harum?
-               
+
                 <button style={btn} onClick={this.props.toggle}>
+                you can click here to register as a user
+
                 <li>
-                <Link to="/">Api Recipes User</Link>
+                <Link to="/registration"> user registration</Link>
                 </li>
              
                 </button>              
                 </p>
-              
+                <button style={btn} onClick={this.props.toggle}>
+                you can click here to register as a cooker
+
+                <li>
+                <Link to="/cookerregistration">register as cooker</Link>
+                </li>
+             
+                </button> 
             </div>
           </div>
         )}

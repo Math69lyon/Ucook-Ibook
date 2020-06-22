@@ -11,26 +11,32 @@ export class Component3 extends Component {
   render() {
     return (
       <Spring
-        from={{ opacity: 0 }}
+        from={{ opacity: 1 }}
         to={{ opacity: 1 }}
         config={{ delay: 1800, duration: 1000 }}
       >
         {props => (
           <div style={props}>
             <div style={c3Style}>
-              <h1>Component 3</h1>
+              <h1>Connection for users and cookers</h1>
               <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Possimus nobis adipisci eum minima deserunt at porro, veritatis
-                officia commodi itaque voluptates vel suscipit assumenda soluta
-                ipsa voluptatibus laudantium labore harum?
                
                 <button style={btn} onClick={this.props.toggle}>
+                you can click here to connect as a user
+
                 <li>
-                <Link to="/Api">Api Ademam Recipes</Link>
+                <Link to="/connection">connection</Link>
               </li>
-             
-              </button>              
+
+              </button> <br></br>
+              <button style={btn} onClick={this.props.toggle}>
+              you can click here to connect as a cooker
+
+                <li>
+                <Link to="/cookerconnection">connection as cooker</Link>
+              </li>
+
+              </button>             
               </p>
               
             </div>

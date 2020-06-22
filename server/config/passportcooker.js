@@ -6,8 +6,8 @@ let opts = {}
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
 opts.secretOrKey = process.env.SECRET
 
-module.exports = (passport) => {
-    passport.use(new jwtStrategy(opts, function(jwt_payload, done) {
+module.exports = (passport2) => {
+    passport2.use(new jwtStrategy(opts, function (jwt_payload, done) {
         Cooker.findById(jwt_payload.id)
             .then(cooker => {
                 if (cooker) {

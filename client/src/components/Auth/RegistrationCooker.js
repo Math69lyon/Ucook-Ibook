@@ -7,7 +7,6 @@ import { withRouter } from 'react-router-dom'
 import SaveIcon from '@material-ui/icons/Save'
 import { connect } from 'react-redux'
 
-
 import { registrationCooker } from '../../actions/authcookerActions'
 
 const styles = {
@@ -24,7 +23,7 @@ const styles = {
 
 class RegistrationCooker extends Component
 {
-    constructor(props)
+    constructor (props)
     {
         super(props)
         this.state = {

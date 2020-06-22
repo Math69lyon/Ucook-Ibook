@@ -16,9 +16,8 @@ const cookerSchema = new Schema({
     },
     city: {
         type: String,
-        required: true,
+        required: true
     }
-
 })
 
 module.exports = mongoose.model('Cooker', cookerSchema)

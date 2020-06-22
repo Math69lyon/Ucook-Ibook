@@ -2,7 +2,7 @@ const router = require('express').Router()
 const Cooker = require('../models/Cooker')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const passport = require('passport')
+const passport2 = require('passport')
 
 const validCookerRegistrationInput = require('../validation/cookerregistration');
 const validCookerConnectionInput = require('../validation/cookerconnection');
@@ -37,7 +37,7 @@ router.route('/cookerregistration')
                     })
                 })
             })
-    })
+})
 
 router.route('/cookerconnection')
     .post((req, res) => {
@@ -69,10 +69,10 @@ router.route('/cookerconnection')
                     return res.status(404).json(errors)
                 }
             })
-    })
+})
 
 router.route('/')
-    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+    .get( passport2.authenticate('jwt', { session: false }),(req, res) => {
         console.log('herve')
         res.json({
             _id: req.cooker._id,
@@ -81,21 +81,38 @@ router.route('/')
         })
 })
 
+router.route('/:id')
+    .get((req, res) => {
+        Cooker.findById(req.params.id)
+        .then(cooker => {
+            if (cooker) {
+                return res.json({
+                    _id: cooker._id,
+                    login: cooker.login,
+                    email: cooker.email
+                })
+            } else {
+                return res.status(404).json({ msg: 'Cooker not found'})
+            }
+        })
+        .catch(err => console.log(err))
+})
+
 router.route('/Api')
-    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+    .get( passport2.authenticate('jwt', { session: false }),(req, res) => {
         res.json({
-            _id: req.user._id,
-            login: req.user.login,
-            email: req.user.email
+            _id: req.cooker._id,
+            login: req.cooker.login,
+            email: req.cooker.email
         })
 })
 
 router.route('/about')
-    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+    .get( passport2.authenticate('jwt', { session: false }),(req, res) => {
         res.json({
-            _id: req.user._id,
-            login: req.user.login,
-            email: req.user.email
+            _id: req.cooker._id,
+            login: req.cooker.login,
+            email: req.cooker.email
         })
 })
 
@@ -109,6 +126,6 @@ router.route('/search')
             })
             .then(cooker => res.json({ cookerId: cooker._id }))
             .catch(err => res.status(404).json({ msg: 'Not found' }))
-    })
+})
 
 module.exports = router

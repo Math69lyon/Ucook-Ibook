@@ -36,10 +36,10 @@ if (localStorage.getItem('jwtToken')) {
 }
 
 if (localStorage.getItem('jwtToken')) {
-    const currentTime=Date.now() / 1000
-    const decode=jwt_decode(localStorage.getItem('jwtToken'))
+    const currentTime2=Date.now() / 1000
+    const decode2=jwt_decode(localStorage.getItem('jwtToken'))
 
-    if (currentTime > decode.exp) {
+    if (currentTime2 > decode2.exp) {
         store.dispatch(logoutCooker())
         window.location.href='/'
     } else {

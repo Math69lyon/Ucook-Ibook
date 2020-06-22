@@ -74,7 +74,6 @@ router.route('/')
     .get( passport.authenticate('jwt', { session: false }),(req, res) => {
         console.log('herve')
         res.json({
-            _id: req.user._id,
             login: req.user.login,
             email: req.user.email
         })
@@ -95,7 +94,7 @@ router.route('/:id')
             }
         })
         .catch(err => console.log(err))
-    })
+})
 
 router.route('/Api')
     .get( passport.authenticate('jwt', { session: false }),(req, res) => {

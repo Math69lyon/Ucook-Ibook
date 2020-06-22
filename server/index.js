@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const passport = require('passport')
+const passport2 = require('passport')
 
 const users = require('./routes/users')
 const cookers = require('./routes/cookers')
@@ -22,6 +23,9 @@ app.use(cors())
 
 app.use(passport.initialize())
 require('./config/passport')(passport)
+
+app.use(passport2.initialize())
+require('./config/passportcooker')(passport2)
 
 app.use('/api/users', users)
 app.use('/api/cookers', cookers)

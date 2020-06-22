@@ -135,6 +135,7 @@ class Header extends Component {
             </div>
         )
         
+<<<<<<< HEAD
         //Onglet quand cooker est connecté :
         const authLinks2 = isAuthenticated2 && (
             <div>
@@ -177,6 +178,16 @@ class Header extends Component {
                     </MenuItem>
                 </Menu>
                 
+=======
+        return (
+            <div className={classes.root}>
+                <AppBar position="fixed" style={{ backgroundColor: '#d1af76' }}>
+                    <Toolbar className={classes.space}>
+                        <Link to="/" className={classes.logo}>UCOOK</Link>
+                        { isAuthenticated ? authLinks : guestLinks }
+                    </Toolbar>
+                </AppBar>
+>>>>>>> 407883b4337afcec0fe2a4191e63a8249cdfc1e4
             </div>
         )
             //Barre du site :

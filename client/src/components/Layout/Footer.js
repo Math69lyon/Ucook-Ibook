@@ -5,7 +5,12 @@ const styles = {
     root: {
         flexGrow: 1,
         textAlign: 'center',
+<<<<<<< HEAD
         backgroundColor: '#607d8b'  
+=======
+        margin: 20,
+        backgroundColor: '#d1af76'  
+>>>>>>> 407883b4337afcec0fe2a4191e63a8249cdfc1e4
     }
 }
 

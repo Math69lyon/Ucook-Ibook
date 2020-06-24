@@ -20,22 +20,25 @@ const styles = {
     }
 }
 
-class Connection extends Component {
+class Connection extends Component
+{
     constructor (props) {
         super(props)
         this.state = {
-            login: '',
+            email: '',
             password: '',
             errors: {}
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)   
     }
+
     componentDidMount () {
         if(this.props.auth.isAuthenticated) {
             this.props.history.push('/')
         }
     }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({ errors: nextProps.errors })
@@ -45,38 +48,41 @@ class Connection extends Component {
             this.props.history.push('/')
         }
     }
+
     handleChange (e) {
         this.setState({ [e.target.name]: e.target.value })
     }
+
     handleSubmit (e) {
         e.preventDefault()
         const userData = {
-            login: this.state.login,
+            email: this.state.email,
             password: this.state.password,
         }
 
         this.props.connectionUser(userData)
     }
+
     render () {
         const { classes } = this.props;
         const { errors } = this.state
         return (
             <Paper style={{ padding: 8 }}>
                 <form onSubmit={this.handleSubmit}>
-                    <TextField 
+                    <TextField
                         variant="outlined"
-                        type="login"
-                        label="Login"
+                        type="email"
+                        label="Email"
                         className={classes.textField}
-                        value={this.state.login}
-                        name="login"
+                        value={this.state.email}
+                        name="email"
                         onChange={this.handleChange}
-                        helperText={errors.login ? errors.login : ''}
-                        error={errors.login ? true : false}
-                        placeholder="Ex: koko" />
-
-                    <TextField 
-                        variant="outlined" 
+                        helperText={errors.email ? errors.email : ''}
+                        error={errors.email ? true : false}
+                        placeholder="Ex: koko@koko.com" />
+                        
+                    <TextField
+                        variant="outlined"
                         type="password"
                         label="Password"
                         className={classes.textField}
@@ -88,7 +94,7 @@ class Connection extends Component {
                         placeholder="Tape your password" />
 
                     <div className={classes.btnBlock}>
-                    <Button variant="contained" style={{ backgroundColor: '#ffab91' }} type="submit" className={classes.button} startIcon={<SaveIcon />} value="Submit">Connection</Button>
+                    <Button variant="contained" style={{ backgroundColor: '#80cbc4' }} type="submit" className={classes.button} startIcon={<SaveIcon />} value="Submit">OK</Button>
                     </div>
                 </form>
             </Paper>

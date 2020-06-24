@@ -6,12 +6,15 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import MoreVert from '@material-ui/icons/MoreVert'
+
 import { Link } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 
+import logo from '../../components/logo.jpeg'
+
 import { logoutUser } from '../../actions/authActions'
-import { logoutCooker } from '../../actions/authcookerActions'
+import SearchForm from '../Search/SearchForm'
 
 const styles = {
     root: {
@@ -35,6 +38,7 @@ class Header extends Component {
         }
         this.handleLogout = this.handleLogout.bind(this)
     }
+
     handleMenu = (event) => { this.setState({ anchorEl: event.currentTarget }) }
 
     handleClose = () => { this.setState({ anchorEl: null }) }
@@ -42,15 +46,13 @@ class Header extends Component {
     handleLogout() {
         this.setState({ anchorEl: null })
         this.props.logoutUser()
-        this.props.logoutCooker()
     }
-       
     render () {
-        const { classes, isAuthenticated, isAuthenticated2, user, cooker } = this.props;
+        const { classes, isAuthenticated, user } = this.props;
         const { anchorEl } = this.state
         const open = Boolean(anchorEl)
-        
-        //Onglet quand on est pas connecté :
+
+        //Onglet sansetre connecté:
         const guestLinks = (
             <div>
                 <IconButton 
@@ -78,20 +80,14 @@ class Header extends Component {
                     <MenuItem onClick={this.handleClose}>
                         <Link to="/connection">Connection</Link>
                     </MenuItem>
-                    <MenuItem onClick={ this.handleClose }>
-                        <Link to="/cookerconnection">Connection as a cooker</Link>
-                    </MenuItem>
                     <MenuItem onClick={this.handleClose}>
                         <Link to="/registration">Registration</Link>
-                    </MenuItem>
-                    <MenuItem onClick={ this.handleClose }>
-                        <Link to="/cookerregistration">Registration as a cooker</Link>
                     </MenuItem>
                 </Menu>
             </div>
         )
 
-        //Onglet quand user est connecté :
+        //Onglet une fois connecté:
         const authLinks = isAuthenticated && (
             <div>
                 <IconButton 
@@ -117,99 +113,45 @@ class Header extends Component {
                     onClose={this.handleClose}
                 >
                     <MenuItem onClick={this.handleClose}>
-                        <Link to="/">Home</Link>
+                        <Link to="/recipeConnect">Recipe</Link>
                     </MenuItem>
                     <MenuItem onClick={this.handleClose}>
                         <Link to={`/profile/${user._id}`}>Profile</Link>
                     </MenuItem>
-                    <MenuItem >
-                        <Link to="/#" onClick={this.handleLogout}>Logout</Link>
-                    </MenuItem>
                     <MenuItem onClick={this.handleClose}>
-                        <Link to="/Api">Api Ademam recipes</Link>
+                        <Link to="/aboutUs">About Us</Link>
                     </MenuItem>
-                    <MenuItem onClick={this.handleClose}>
-                        <Link to="/about">About Us</Link>
-                    </MenuItem>
-                </Menu>
-            </div>
-        )
-        
-<<<<<<< HEAD
-        //Onglet quand cooker est connecté :
-        const authLinks2 = isAuthenticated2 && (
-            <div>
-                <IconButton 
-                    aria-owns={ open ? 'menu-appbar': undefined }
-                    aria-haspopup="true"
-                    color="inherit"
-                    onClick={this.handleMenu}
-                >
-                    <AccountCircle />
-                </IconButton>
-                <Menu
-                    id="menu-appbar"
-                    open={open}
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right'
-                    }}
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'right'
-                    }}
-                    anchorEl={anchorEl}
-                    onClose={this.handleClose}
-                >
                     <MenuItem onClick={this.handleClose}>
                         <Link to="/">Home</Link>
                     </MenuItem>
-                    <MenuItem onClick={ this.handleClose }>
-                        <Link to={`/profile/${cooker._id}`}>Profile</Link>
-                    </MenuItem>
                     <MenuItem >
                         <Link to="/#" onClick={this.handleLogout}>Logout</Link>
                     </MenuItem>
-                    <MenuItem onClick={this.handleClose}>
-                        <Link to="/Api">Api Ademam recipes</Link>
-                    </MenuItem>
-                    <MenuItem onClick={this.handleClose}>
-                        <Link to="/about">About Us</Link>
-                    </MenuItem>
                 </Menu>
-                
-=======
-        return (
-            <div className={classes.root}>
-                <AppBar position="fixed" style={{ backgroundColor: '#d1af76' }}>
-                    <Toolbar className={classes.space}>
-                        <Link to="/" className={classes.logo}>UCOOK</Link>
-                        { isAuthenticated ? authLinks : guestLinks }
-                    </Toolbar>
-                </AppBar>
->>>>>>> 407883b4337afcec0fe2a4191e63a8249cdfc1e4
             </div>
         )
-            //Barre du site :
-            return (
-                <div className={classes.root}>
-                    <AppBar position="fixed" style={{ backgroundColor: '#607d8b' }}>
-                        <Toolbar className={classes.space}>
-                            <Link to="/" className={classes.logo}>UCOOK</Link>
-                            { isAuthenticated ? authLinks : guestLinks }
-                        </Toolbar>
-                    </AppBar>
-                </div>  
+        //Barre Header du site:
+        return (
+            <div className={classes.root}>
+                <AppBar position="static" style={{ backgroundColor: "rgb(106,193,196)" }}>
+                    <Toolbar className={classes.space}>
+                        <Link to="/" className="logo">
+                            <div className="logo">
+                                <img src={logo} alt="Logo" justifyContent="space-around" />
+                            </div>
+                        </Link>
+                        <SearchForm />
+                        { isAuthenticated ? authLinks : guestLinks }
+                    </Toolbar>
+                </AppBar> 
+            </div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
-    user: state.auth.user,
-    isAuthenticated2: state.auth2.isAuthenticated2,
-    cooker: state.auth2.cooker
-
+    user: state.auth.user
 })
 
-export default connect(mapStateToProps, { logoutUser, logoutCooker })(withStyles(styles)(Header))
+export default connect(mapStateToProps, { logoutUser })(withStyles(styles)(Header))

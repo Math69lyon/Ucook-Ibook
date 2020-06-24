@@ -1,44 +1,60 @@
-import React, { Component } from "react";
-import { Spring } from 'react-spring/renderprops'; 
+/* Component relatif à la sous page Api Ademam Recipes 
+    Css directement intégré
+*/
+
+import React, { Component } from "react"
+import Button from '@material-ui/core/Button'
+import { Spring } from 'react-spring/renderprops'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from "react-router-dom"
+
+const btn = {
+  backgroundColor: "steelblue",
+  color: "#80deea",
+  '&:hover': {
+      color: 'steelblue',
+      borderColor: 'steelblue',
+      backgroundColor: 'steelblue',
+      textTransform: "uppercase"
+  }
+}
+
+const c3Style = {
+  background: "skyblue",
+  color: "white",
+  padding: "1.5rem 1.5rem 5rem 1.5rem"
+}
 
 export class Component3 extends Component {
   render() {
     return (
       <Spring
-        from={{ opacity: 1 }}
+        from={{ opacity: 0 }}
         to={{ opacity: 1 }}
-        config={{ delay: 1800, duration: 1000 }}
+        config={{ delay: 3000, duration: 1000 }}
       >
         {props => (
           <div style={props}>
             <div style={c3Style}>
-              <h1>Connection for users and cookers</h1>
-              <p>
-               
-                <button style={btn} onClick={this.props.toggle}>
-                you can click here to connect as a user
-
-                <li>
-                <Link to="/connection">connection</Link>
-              </li>
-
-              </button> <br></br>
-              <button style={btn} onClick={this.props.toggle}>
-              you can click here to connect as a cooker
-
-                <li>
-                <Link to="/cookerconnection">connection as cooker</Link>
-              </li>
-
-              </button>             
-              </p>
-              
+              <div className="component">
+                <h1>Connection</h1>
+                <p>
+                  <button style={btn}>
+                      <Link to="/connection">
+                        <Button
+                          variant="outlined"
+                          onClick={this.props.toggle}
+                        >
+                          Sign In !
+                        </Button>
+                      </Link>
+                  </button>
+                </p>
+              </div>
             </div>
           </div>
         )}
@@ -47,19 +63,4 @@ export class Component3 extends Component {
   }
 }
 
-const c3Style = {
-  background: "skyblue",
-  color: "white",
-  padding: "1.5rem 1.5rem 5rem 1.5rem"
-};
-
-const btn = {
-  background: "#333",
-  color: "#fff",
-  padding: "1rem 2rem",
-  border: "none",
-  textTransform: "uppercase",
-  margin: "15px 0"
-};
-
-export default Component3;
+export default Component3

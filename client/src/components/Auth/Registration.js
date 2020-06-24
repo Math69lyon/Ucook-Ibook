@@ -62,7 +62,7 @@ class Registration extends Component
         const { classes } = this.props;
         const { errors } = this.state;
         return (
-            <Paper style={{ padding: 8, marginTop: '60px' }}>
+            <Paper style={{ padding: 8 }}>
                 <form onSubmit={this.handleSubmit}>
                     <TextField
                         variant="outlined"
@@ -70,8 +70,7 @@ class Registration extends Component
                         label="Login"
                         className={classes.textField}
                         value={this.state.login}
-                        name="login"
-                        onChange={this.handleChange}
+                        name="login" onChange={this.handleChange}
                         helperText={errors.login ? errors.login : ''}
                         error={errors.login ? true : false}
                         placeholder="EX: koko" />
@@ -82,8 +81,7 @@ class Registration extends Component
                         label="Email"
                         className={classes.textField}
                         value={this.state.email}
-                        name="email"
-                        onChange={this.handleChange}
+                        name="email" onChange={this.handleChange}
                         helperText={errors.email ? errors.email : ''}
                         error={errors.email ? true : false}
                         placeholder="Ex: koko@koko.com" />
@@ -94,8 +92,7 @@ class Registration extends Component
                         label="Password"
                         className={classes.textField}
                         value={this.state.password}
-                        name="password"
-                        onChange={this.handleChange}
+                        name="password" onChange={this.handleChange}
                         helperText={errors.password ? errors.password : ''}
                         error={errors.password ? true : false}
                         placeholder="Tape your password" />
@@ -106,14 +103,13 @@ class Registration extends Component
                         label="Password confirm"
                         className={classes.textField}
                         value={this.state.password_confirm}
-                        name="password_confirm"
-                        onChange={this.handleChange}
+                        name="password_confirm" onChange={this.handleChange}
                         helperText={errors.password_confirm ? errors.password_confirm : ''}
                         error={errors.password_confirm ? true : false}
                         placeholder="Confirm your password" />
+                        <div className={classes.btnBlock}>
 
-                    <div className={classes.btnBlock}>
-                    <Button variant="contained" style={{ backgroundColor: '#ffab91' }} type="submit" className={classes.button} startIcon={<SaveIcon />} value="Submit">OK</Button>
+                    <Button variant="contained" style={{ backgroundColor: '#80cbc4' }} type="submit" className={classes.button} startIcon={<SaveIcon />} value="Submit">OK</Button>
                     </div>
                 </form>
             </Paper>

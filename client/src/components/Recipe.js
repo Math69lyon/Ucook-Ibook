@@ -1,5 +1,6 @@
-import React from 'react';
-import style from './recipe.module.css';
+import React from 'react'
+import style from './recipe.module.css'
+
 const Recipe = ({ title, calories, image, ingredients }) => {
     return (
         <div className={style.recipe}>
@@ -19,4 +20,4 @@ const Recipe = ({ title, calories, image, ingredients }) => {
     );
 }
 
-export default Recipe;
+export default Recipe

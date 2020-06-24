@@ -1,11 +1,34 @@
-import React, { Component } from "react";
-import { Spring } from 'react-spring/renderprops'; 
+/* Component relatif à la sous page Api Recipes User 
+    Css directement intégré
+*/
+
+
+import React, { Component } from "react"
+import Button from '@material-ui/core/Button'
+import { Spring } from 'react-spring/renderprops'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from "react-router-dom"
+
+const btn = {
+  backgroundColor: "#80deea",
+  color: "#006064",
+  '&:hover': {
+      color: '#80deea',
+      borderColor: '#80deea',
+      backgroundColor: '#006064',
+      textTransform: "uppercase"
+  }
+}
+
+const c2Style = {
+  background: "slateblue",
+  color: "white",
+  padding: "1.5rem",
+}
 
 export class Component2 extends Component {
   render() {
@@ -13,31 +36,27 @@ export class Component2 extends Component {
       <Spring
         from={{ opacity: 0 }}
         to={{ opacity: 1 }}
-        config={{ delay: 800, duration: 1000 }}
+        config={{ delay: 2000, duration: 1000 }}
       >
         {props => (
           <div style={props}>
             <div style={c2Style}>
-              <h1>Registration for users and cookers</h1>
-              <p>
+              <div className="component">
 
-                <button style={btn} onClick={this.props.toggle}>
-                you can click here to register as a user
-
-                <li>
-                <Link to="/registration"> user registration</Link>
-                </li>
-             
-                </button>              
-                </p>
-                <button style={btn} onClick={this.props.toggle}>
-                you can click here to register as a cooker
-
-                <li>
-                <Link to="/cookerregistration">register as cooker</Link>
-                </li>
-             
-                </button> 
+                <h1>Registration</h1>
+                <p>
+                  <button style={btn}>
+                      <Link to="/registration">
+                        <Button
+                          variant="outlined"
+                          onClick={this.props.toggle}
+                        >
+                          Sign Up !
+                        </Button>
+                      </Link>
+                  </button>
+                </p> 
+              </div>
             </div>
           </div>
         )}
@@ -45,20 +64,5 @@ export class Component2 extends Component {
     );
   }
 }
-
-const c2Style = {
-  background: "slateblue",
-  color: "white",
-  padding: "1.5rem"
-};
-
-const btn = {
-  background: "#333",
-  color: "#fff",
-  padding: "1rem 2rem",
-  border: "none",
-  textTransform: "uppercase",
-  margin: "15px 0"
-};
 
 export default Component2;

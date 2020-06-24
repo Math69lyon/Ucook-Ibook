@@ -1,11 +1,30 @@
-import React, { Component } from "react";
-import { Spring } from 'react-spring/renderprops'; 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+/* Component relatif à la sous page Api Recipes User 
+    Css directement intégré
+*/
+
+
+import React, { Component } from "react"
+import Button from '@material-ui/core/Button'
+import { Spring } from 'react-spring/renderprops'
+import { Link } from "react-router-dom"
+
+const btn = {
+  backgroundColor: "#80deea",
+  color: "#006064",
+  '&:hover': {
+      color: '#80deea',
+      borderColor: '#80deea',
+      backgroundColor: '#006064',
+      textTransform: "uppercase"
+  }
+}
+
+const c1Style = {
+  background: "steelblue",
+  color: "white",
+  padding: "1.5rem",
+}
+
 
 export class Component1 extends Component {
   render() {
@@ -13,22 +32,26 @@ export class Component1 extends Component {
       <Spring
         from={{ opacity: 0 }}
         to={{ opacity: 1 }}
-        config={{ delay: 800, duration: 1000 }}
+        config={{ delay: 1000, duration: 1000 }}
       >
         {props => (
           <div style={props}>
             <div style={c1Style}>
-              <h1>Here are the recipes</h1>
-              <p>
-               
-                <button style={btn} onClick={this.props.toggle}>
-                <li>
-                <Link to="/Api">let's find a recipe</Link>
-                </li>
-             
-                </button>              
+              <div className="component">
+                <h1>Here are the recipes</h1>
+                <p>
+                  <button style={btn}>
+                      <Link to="/recipe">
+                        <Button
+                          variant="outlined"
+                          onClick={this.props.toggle}
+                        >
+                          Find Recipe !
+                        </Button>
+                      </Link>
+                  </button>
                 </p>
-              
+              </div>
             </div>
           </div>
         )}
@@ -37,32 +60,4 @@ export class Component1 extends Component {
   }
 }
 
-const c1Style = {
-  background: "steelblue",
-  color: "white",
-  padding: "1.5rem"
-};
-
-const btn = {
-  background: "#333",
-  color: "#fff",
-  padding: "1rem 2rem",
-  border: "none",
-  textTransform: "uppercase",
-  margin: "15px 0"
-};
-
-export default Component1;
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default (Component1)

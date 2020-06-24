@@ -10,7 +10,7 @@ const Api = () => {
 
   const [search, setSearch] = useState('');
 
-  const[query, setQuery] = useState('chicken');
+  const[query, setQuery] = useState('');
 
   useEffect(() => {
     getRecipes();
@@ -39,7 +39,7 @@ const getSearch = e => {
   return (
     <div className="App">
       <form onSubmit= {getSearch} className="search-form">
-        <input className="search-bar" type="text" value={search} onChange={updateSearch}/>
+        <input className="search-bar" type="text" value={search} onChange={updateSearch} placeholder="an ingredient, a recipe of your choice ..."/>
         <button className="search-button" type="submit">Search</button>
       </form>
       <div className="recipes">
@@ -50,6 +50,7 @@ const getSearch = e => {
           calories={recipe.recipe.calories}
           image={recipe.recipe.image} 
           ingredients={recipe.recipe.ingredients}
+          button={recipe.recipe.button}
         />
       ))}
       </div>

@@ -1,7 +1,11 @@
 import axios from 'axios'
 import {
     GET_PROFILE,
-    LOAD_PROFILE
+    LOAD_PROFILE,
+    GET_COMMENTS,
+    LOADING_COMMENTS,
+    FOLLOW,
+    UNFOLLOW
 } from '../constants'
 
 export const getUserProfile = (userId) => dispatch => {
@@ -23,6 +27,34 @@ export const refreshUserProfile = (userId) => dispatch => {
         .catch(err => console.log(err))
 }
 
+export const getCommentsByUserId = (userId) => dispatch => {
+    dispatch(loadComments())
+    axios.get(`http://localhost:5000/api/comments/${userId}`)
+        .then(res => dispatch({
+            type: GET_COMMENTS,
+            payload: res.data
+        }))
+        .catch(err => console.log(err))
+}
+
+export const followUser = (userId) => dispatch => {
+    axios.post('http://localhost:5000/api/users/follow', { userId })
+        .then(res => dispatch({
+            type: FOLLOW,
+            payload: res.data.userId
+        }))
+        .catch(err => console.log(err))
+}
+
+export const unfollowUser = (userId) => dispatch => {
+    axios.post('http://localhost:5000/api/users/unfollow', { userId })
+        .then(res => dispatch({
+            type: UNFOLLOW,
+            payload: res.data.userId
+        }))
+        .catch(err => console.log(err))
+}
+
 export const searchUser = (searchData, history) => dispatch => {
     axios.post('http://localhost:5000/api/users/search', searchData)
         .then(res => {
@@ -34,5 +66,11 @@ export const searchUser = (searchData, history) => dispatch => {
 export const loadProfile = () => {
     return {
         type: LOAD_PROFILE
+    }
+}
+
+export const loadComments = () => {
+    return {
+        type: LOADING_COMMENTS
     }
 }

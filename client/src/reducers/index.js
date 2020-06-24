@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
 import errorReducer from './errorReducer'
 import authReducer from './authReducer'
-import authCookerReducer from './authCookerReducer'
+import commentReducer from './commentReducer'
+import profileReducer from './profileReducer'
 
 export default combineReducers({
     errors: errorReducer,
     auth: authReducer,
-    auth2: authCookerReducer
+    comment: commentReducer,
+    profile: profileReducer
 })

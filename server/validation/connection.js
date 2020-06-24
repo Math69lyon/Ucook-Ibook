@@ -3,14 +3,14 @@ const Validator = require('validator')
 module.exports = function (data) {
     let errors = {}
 
-    //Login validator:
-    if (!Validator.isLength(data.login, { min: 4, max: 20 }))
+    //Email validator:
+    if (!Validator.isEmail(data.email))
     {
-        errors.login = 'Login must between 4 and 20 characters'
+        errors.email = 'Email is invalid'
     }
-    if (Validator.isEmpty(data.login))
+    if (Validator.isEmpty(data.email))
     {
-        errors.login = 'Login is required'
+        errors.email = 'Email is required'
     }
 
     //Password validator:

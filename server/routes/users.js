@@ -46,7 +46,7 @@ router.route('/connection')
             return res.status(404).json(errors)
         }
 
-        User.findOne({ login: req.body.login })
+        User.findOne({ email: req.body.email })
             .then(user => {
                 if (user) {
                     bcrypt.compare(req.body.password, user.password)
@@ -64,7 +64,7 @@ router.route('/connection')
                         }
                     })
                 } else {
-                    errors.login = 'User not found'
+                    errors.email = 'User not found'
                     return res.status(404).json(errors)
                 }
             })
@@ -72,36 +72,90 @@ router.route('/connection')
 
 router.route('/')
     .get( passport.authenticate('jwt', { session: false }),(req, res) => {
-        console.log('herve')
+        console.log('here')
         res.json({
+            _id: req.user._id,
             login: req.user.login,
-            email: req.user.email
+            email: req.user.email,
+            followers: req.user.followers,
+            following: req.user.following
         })
 })
 
-router.route('/:id')
-    .get((req, res) => {
-        User.findById(req.params.id)
-        .then(user => {
-            if (user) {
-                return res.json({
-                    _id: user._id,
-                    login: user.login,
-                    email: user.email
-                })
-            } else {
-                return res.status(404).json({ msg: 'User not found'})
-            }
+router.route('/recipeConnect')
+    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+        res.json({
+            _id: req.user._id,
+            login: req.user.login,
+            email: req.user.email,
+            followers: req.user.followers,
+            following: req.user.following
         })
-        .catch(err => console.log(err))
 })
+
+router.route('/homeConnect')
+    .get( passport.authenticate('jwt', { session: false }),(req, res) => {
+        res.json({
+            _id: req.user._id,
+            login: req.user.login,
+            email: req.user.email,
+            followers: req.user.followers,
+            following: req.user.following
+        })
+})
+
+router.route('/follow')
+    .post(
+        passport.authenticate('jwt', { session: false }),
+        (req, res) => {
+            User.findOneAndUpdate({
+                _id: req.user.id
+            }, {
+                $push: { following: req.body.userId }
+            },
+            { new: true })
+            .then(user => {
+                User.findOneAndUpdate({
+                    _id: req.body.userId
+                }, {
+                    $push: { followers: req.user.id }
+                }, { new: true })
+                .then(user => res.json({ userId: req.body.userId }))
+                .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err))
+})
+
+router.route('/unfollow')
+    .post(
+        passport.authenticate('jwt', { session: false }),
+        (req, res) => {
+            User.findOneAndUpdate({
+                _id: req.user.id
+            }, {
+                $pull: { following: req.body.userId }
+            }, { new: true })
+            .then(user => {
+                User.findOneAndUpdate({
+                    _id: req.body.userId
+                }, {
+                    $pull: { followers: req.user.id }
+                }, { new: true })
+                .then(user => res.json({ userId: req.body.userId }))
+                .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err))
+        }
+)
 
 router.route('/Api')
     .get( passport.authenticate('jwt', { session: false }),(req, res) => {
         res.json({
             _id: req.user._id,
             login: req.user.login,
-            email: req.user.email
+            email: req.user.email,
+            followers: req.user.followers,
+            following: req.user.following
         })
 })
 
@@ -110,7 +164,9 @@ router.route('/about')
         res.json({
             _id: req.user._id,
             login: req.user.login,
-            email: req.user.email
+            email: req.user.email,
+            followers: req.user.followers,
+            following: req.user.following
         })
 })
 
@@ -125,5 +181,24 @@ router.route('/search')
         .then(user => res.json({ userId: user._id }))
         .catch(err => res.status(404).json({ msg: 'Not found'}))
 })
+
+router.route('/:id')
+    .get((req, res) => {
+        User.findById(req.params.id)
+        .then(user => {
+            if (user) {
+                return res.json({
+                    _id: user._id,
+                    login: user.login,
+                    email: user.email,
+                    followers: user.followers,
+                    following: user.following
+                })
+            } else {
+                return res.status(404).json({ msg: 'User not found'})
+            }
+        })
+        .catch(err => console.log(err))
+    })
 
 module.exports = router

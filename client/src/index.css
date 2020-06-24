@@ -6,7 +6,8 @@ body
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #fafafa;
+  background: rgb(196,196,106);
+  background: linear-gradient(90deg, rgba(196,196,106,0.9710084717480743) 0%, rgba(147,203,135,1) 31%, rgba(57,195,188,1) 72%, rgba(76,150,164,1) 100%);
 }
 
 code
@@ -24,10 +25,9 @@ a:hover
 {
   text-decoration: none;
 }
-
 a img
 {
   justify-content: space-between;
   margin: 10px;
-  height: 30px;
+  height: 60px;
 }

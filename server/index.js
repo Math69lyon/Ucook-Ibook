@@ -4,15 +4,14 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const passport = require('passport')
-const passport2 = require('passport')
 
 const users = require('./routes/users')
-const cookers = require('./routes/cookers')
+const comments = require('./routes/comments')
 
-//setup environment
+//setup environment:
 dotenv.config()
 
-//mongo db connect
+//mongo db connect:
 mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true })
 
 const app = express()
@@ -24,12 +23,8 @@ app.use(cors())
 app.use(passport.initialize())
 require('./config/passport')(passport)
 
-app.use(passport2.initialize())
-require('./config/passportcooker')(passport2)
-
 app.use('/api/users', users)
-app.use('/api/cookers', cookers)
+app.use('/api/comments', comments)
 
-//run App port
 const PORT = process.env.PORT || 5000
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
+app.listen(PORT, () => console.log('Server is running on port 5000'))

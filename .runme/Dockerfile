@@ -1,5 +1,5 @@
 FROM node:latest
 WORKDIR /app
 COPY . .
-RUN npm run build
-ENTRYPOINT npm run start
+RUN npm install
+ENTRYPOINT npm run start && npm start

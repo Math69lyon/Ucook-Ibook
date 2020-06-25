@@ -1,5 +1,24 @@
 import React from 'react'
 import style from './recipe.module.css'
+import Button from '@material-ui/core/Button'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
+
+
+const btn = {
+  backgroundColor: "#80deea",
+  color: "#006064",
+  '&:hover': {
+      color: '#80deea',
+      borderColor: '#80deea',
+      backgroundColor: '#006064',
+      textTransform: "uppercase"
+  }
+}
 
 const Recipe = ({ title, calories, image, ingredients }) => {
     return (
@@ -16,8 +35,16 @@ const Recipe = ({ title, calories, image, ingredients }) => {
             </div>
             <p> {calories}</p>
             <img className={style.image} src={image} alt="" />
+                <button style={btn}>
+                    <Link to="/homeConnect">
+                        <Button
+                          variant="outlined"
+                        >
+                            Comments
+                        </Button>
+                    </Link>
+                </button>
         </div>
-    );
+    )
 }
-
 export default Recipe

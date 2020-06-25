@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Recipe from '../Recipe';
 
-
 const Api = () => {
   const APP_ID = "39194b34";
   const APP_KEY = "d9b9ed29c355e57b53807408c9bb0a7a";
@@ -51,6 +50,7 @@ const getSearch = e => {
           image={recipe.recipe.image} 
           ingredients={recipe.recipe.ingredients}
           button={recipe.recipe.button}
+          comment={recipe.recipe.comment}
         />
       ))}
       </div>

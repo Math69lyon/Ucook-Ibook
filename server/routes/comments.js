@@ -17,11 +17,11 @@ router.route('/add')
             })
 
             newComment.save()
-                .then(comment => res.json(comment))
+                .then(post => res.json(post))
                 .catch(err => console.log(err))
-})
+    })
 
-router.route('/')
+router.route('/homeConnect')
         .get((req, res) => {
             Comment.find()
                 .sort({ createdAt: -1 })

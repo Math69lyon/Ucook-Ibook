@@ -65,4 +65,4 @@ export class Component2 extends Component {
   }
 }
 
-export default Component2;
+export default Component2

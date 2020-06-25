@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import ListComment from './Comments/ListComment'
+import LoadingComments from './Comments/LoadingComments'
 import Connection from './Auth/Connection'
 
 class HomeConnect extends Component {

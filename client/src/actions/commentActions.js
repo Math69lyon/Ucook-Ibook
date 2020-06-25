@@ -24,7 +24,7 @@ export const getComments = () => dispatch => {
         .catch(err => console.log(err))
 }
 
-export const getCommentsByFollowingUsers = () => dispatch => {
+export const getCommentsByFollowingComments = () => dispatch => {
     axios.get('http://localhost:5000/api/comments/following')
         .then(res => dispatch({
             type: GET_COMMENTS,

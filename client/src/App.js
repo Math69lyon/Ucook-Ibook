@@ -16,7 +16,6 @@ import NotFound from './components/Profile/NotFound'
 import Search from './components/Search/NotFound'
 import About from './components/Layout/About'
 import Api from './components/Layout/Api'
-import Recipe from './components/RecipeConnect'
 
 import setAuthHeader from './utils/setAuthHeader'
 import { logoutUser, getCurrentUser } from './actions/authActions'
@@ -49,7 +48,6 @@ class App extends Component {
                 <Route path="/aboutUs" component={About} />
                 <Route path="/homeConnect" component={HomeConnect} />
                 <Route path="/recipe" component={Api} />
-                <Route path="/recipeConnect" component={Recipe} />
                 <Route path="/search" component={Search} />
                 <Route component={NotFound}/>
               </Switch>

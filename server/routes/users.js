@@ -82,7 +82,7 @@ router.route('/')
         })
 })
 
-router.route('/recipeConnect')
+router.route('/recipe')
     .get( passport.authenticate('jwt', { session: false }),(req, res) => {
         res.json({
             _id: req.user._id,

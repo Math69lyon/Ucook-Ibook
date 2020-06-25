@@ -5,7 +5,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import AddComment from './AddComment'
 import Comment from './Comment'
 import { connect } from 'react-redux'
-import { getComments, getCommentsByFollowingUsers } from '../../actions/commentActions'
+import { getComments, getCommentsByFollowingComments } from '../../actions/commentActions'
 import LoadingComments from './LoadingComments'
 
 class ListComment extends Component {
@@ -31,7 +31,7 @@ class ListComment extends Component {
         if (prevState.allComments !== this.state.allComments) {
             this.state.allComments
             ? this.props.getComments()
-            : this.props.getCommentsByFollowingUsers()
+            : this.props.getCommentsByFollowingComments()
         }
     }
 
@@ -59,4 +59,4 @@ const mapStateToProps = (state) => ({
     loading: state.comment.loading
 })
 
-export default connect(mapStateToProps, { getComments, getCommentsByFollowingUsers })(ListComment)
+export default connect(mapStateToProps, { getComments, getCommentsByFollowingComments })(ListComment)

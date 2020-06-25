@@ -25,21 +25,21 @@ const styles = {
 
 class Comment extends Component {
     render () {
-        const { classes, comment } = this.props
+        const { classes, post } = this.props
         return (
             <Paper className={classes.paper}>
                 <div 
                     className={classes.avatar}
                     style={{
-                        backgroundColor: `#${comment.user.id.slice(comment.user.id.length - 3)}`
+                        backgroundColor: `#${post.user.id.slice(post.user.id.length - 3)}`
                     }}
                 />
                 <div>
                     <h3 className={classes.login}>
-                        <Link to={`/profile/${comment.user.id}`}>{comment.user.login}</Link>
-                        <span className={classes.time}>{(new Date(comment.createdAt)).toLocaleString()}</span>
+                        <Link to={`/profile/${post.user.id}`}>{post.user.login}</Link>
+                        <span className={classes.time}>{(new Date(post.createdAt)).toLocaleString()}</span>
                     </h3>
-                    {comment.text}
+                    {post.text}
                 </div>
             </Paper>
         )

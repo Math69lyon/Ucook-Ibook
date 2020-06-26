@@ -36,7 +36,7 @@ class Comment extends Component {
                 />
                 <div>
                     <h3 className={classes.login}>
-                        <Link to={`/profile/${post.user.id}`}>{post.user.login}</Link>
+                        <Link to="/homeConnect">{post.user.login}</Link>
                         <span className={classes.time}>{(new Date(post.createdAt)).toLocaleString()}</span>
                     </h3>
                     {post.text}

@@ -133,7 +133,7 @@ class Header extends Component {
         //Barre Header du site:
         return (
             <div className={classes.root}>
-                <AppBar position="static" style={{ backgroundColor: "rgb(106,193,196)" }}>
+                <AppBar position="static" style={{ backgroundColor: "rgb(25,21,89)" }}>
                     <Toolbar className={classes.space}>
                         <Link to="/" className="logo">
                             <div className="logo">

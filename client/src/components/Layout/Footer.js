@@ -12,9 +12,7 @@ const Footer = () => {
           <MDBContainer fluid className="text-center text-md-left">
             <MDBRow>
               <MDBCol md="6">
-                <p>
-                  <h2>contact</h2>
-                </p>
+                
               </MDBCol>
               <MDBCol md="6">
                 <a href="https://facebook.com" title="Come to our Facebook page !" target="_blank"><img src="/Logos/facebook.jpg" alt="facebook"/></a>
